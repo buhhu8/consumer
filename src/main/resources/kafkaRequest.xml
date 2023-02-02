@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <kafkaRequest>
+        <clientName>Book1</clientName>
+         <amount>12</amount>
+         <createDate>2023-01-25 18:38:35</createDate>
+         <updateDate>2023-01-25 19:38:35</updateDate>
+    </kafkaRequest>

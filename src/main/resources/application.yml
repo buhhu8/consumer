@@ -1,0 +1,67 @@
+#Unseal Key: /+V2qF+yLneB0fuxHG/sSUkWzRNR4gcpb9KVVJ1WzXg=
+#Root Token: hvs.18c6Qb2BeGHgUtptG6QEOJIn
+server.port: 5697
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: buhhu8
+    password: 0280829
+    schema: master
+    hikari:
+      maximum-pool-size: 5
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    open-in-view: false
+    show-sql: false
+    properties:
+      hibernate.format_sql: true
+      hibernate.query.in_clause_parameter_padding: true
+      hibernate.query.plan_cache_max_size: 32
+      hibernate.query.plan_parameter_metadata_max_size: 128
+      hibernate.criteria.literal_handling_mode: bind
+  second-datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: buhhu8
+    password: 0280829
+    schema: master
+    hikari:
+      maximum-pool-size: 5
+#  second-jpa:
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+#    open-in-view: false
+#    show-sql: false
+#    properties:
+#      hibernate.format_sql: true
+#      hibernate.query.in_clause_parameter_padding: true
+#      hibernate.query.plan_cache_max_size: 32
+#      hibernate.query.plan_parameter_metadata_max_size: 128
+#      hibernate.criteria.literal_handling_mode: bind
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group_id
+      auto-offset-reset: earliest
+  liquibase:
+    enabled: true
+    default-schema: master
+    user: buhhu8
+    password: 0280829
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    change-log: classpath:db/liquibase/changelog_master.xml
+    contexts: test
+#spring:
+  application:
+    name: config-client
+#  cloud:
+#    config:
+#      token: 00000000-0000-0000-0000-000000000000
+#      uri: http://localhost:8888
+#  profiles:
+#    active: prop
+#  config:
+#    import: optional:configserver:http://localhost:8888

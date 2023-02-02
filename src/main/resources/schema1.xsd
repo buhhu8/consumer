@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+      
+  
+  <xs:element name="kafkaRequest" type="kafkaRequest"/>
+      
+  
+  <xs:complexType name="kafkaRequest">
+            
+    
+    <xs:sequence>
+                  
+      
+      <xs:element name="clientName" type="xs:string"/>
+                  
+      
+      <xs:element name="amount" type="xs:decimal"/>
+                  
+      
+      <xs:element name="createDate" type="xs:dateTime"/>
+                  
+      
+      <xs:element name="updateDate" type="xs:dateTime"/>
+
+    
+    </xs:sequence>
+          
+  
+  </xs:complexType>
+    
+
+</xs:schema>

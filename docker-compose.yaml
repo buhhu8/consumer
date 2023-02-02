@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: write
+    image: postgres:11.7
+    environment:
+      POSTGRES_USER: buhhu8
+      POSTGRES_PASSWORD: 0280829
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+      - //docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  postgres1:
+    container_name: read
+    image: postgres:11.7
+    environment:
+      POSTGRES_USER: buhhu8
+      POSTGRES_PASSWORD: 0280829
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+      - //docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5433:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
+  postgres1:

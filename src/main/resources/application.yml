@@ -2,14 +2,25 @@
 #Root Token: hvs.18c6Qb2BeGHgUtptG6QEOJIn
 server.port: 5697
 spring:
+  database-names:
+    list: read, write
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: buhhu8
-    password: 0280829
-    schema: master
-    hikari:
-      maximum-pool-size: 5
+    read:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5433/postgres
+      username: buhhu8
+      password: 0280829
+      schema: master
+      hikari:
+        maximum-pool-size: 5
+    write:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/postgres
+      username: buhhu8
+      password: 0280829
+      schema: master
+      hikari:
+        maximum-pool-size: 5
   jpa:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
@@ -21,14 +32,6 @@ spring:
       hibernate.query.plan_cache_max_size: 32
       hibernate.query.plan_parameter_metadata_max_size: 128
       hibernate.criteria.literal_handling_mode: bind
-  second-datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/postgres
-    username: buhhu8
-    password: 0280829
-    schema: master
-    hikari:
-      maximum-pool-size: 5
 #  second-jpa:
 #    database: postgresql
 #    database-platform: org.hibernate.dialect.PostgreSQL10Dialect

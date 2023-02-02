@@ -5,5 +5,5 @@ import com.buhhu8.consumer.model.KafkaEntity;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface KafkaReadEntityToKafkaRequestMapper extends ObjectMapper<KafkaEntity, generated.KafkaRequest> {
+public interface KafkaRequestToKafkaReadEntity extends ObjectMapper<generated.KafkaRequest, KafkaEntity> {
 }

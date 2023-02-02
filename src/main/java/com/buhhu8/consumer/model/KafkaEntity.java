@@ -1,6 +1,5 @@
-package com.buhhu8.consumer.model.write;
+package com.buhhu8.consumer.model;
 
-import com.buhhu8.consumer.config.LocalDateTimeAdapter;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -14,7 +13,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "testxml")
-public class KafkaWriteEntity {
+public class KafkaEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")

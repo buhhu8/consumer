@@ -1,12 +1,10 @@
 package com.buhhu8.consumer.service;
 
 import com.buhhu8.consumer.config.factory.MapperFactory;
-import com.buhhu8.consumer.model.write.KafkaWriteEntity;
-import com.buhhu8.consumer.repositories.read.KafkaReadRepository;
-import com.buhhu8.consumer.repositories.write.KafkaWriteRepository;
+import com.buhhu8.consumer.model.KafkaEntity;
+import com.buhhu8.consumer.repositories.KafkaRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
@@ -26,15 +24,14 @@ import java.util.List;
 @AllArgsConstructor
 public class ConsumerService {
 
-    private final KafkaWriteRepository kafkaWriteRepository;
-    private final KafkaReadRepository kafkaReadRepository;
+    private final KafkaRepository kafkaRepository;
     private final MapperFactory mapperFactory;
 
     @KafkaListener(topics = "test")
     public void orderListener(String record) {
         try {
             var res = unmarshall(record);
-            kafkaWriteRepository.save(mapperFactory.mapTo(res, KafkaWriteEntity.class));
+            kafkaRepository.save(mapperFactory.mapTo(res, KafkaEntity.class));
         } catch (Exception exception) {
             System.out.println(exception);
         }
@@ -52,7 +49,7 @@ public class ConsumerService {
     }
 
     public List<generated.KafkaRequest> getAll() {
-        return mapperFactory.mapListTo(kafkaReadRepository.findAll(), generated.KafkaRequest.class);
+        return mapperFactory.mapListTo(kafkaRepository.findAll(), generated.KafkaRequest.class);
 
     }
 }
